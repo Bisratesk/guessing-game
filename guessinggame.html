@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>guessing-game</title>
+</head>
+<body>
+     <div class="container" id="guess"></div>
+     <script>
+
+  const header=document.createElement('h1')
+  header.innerHTML='The guessing game'
+
+  const input=document.createElement('input')
+  input.type='number'
+  
+  input.placeholder='guess from 1 to 10'
+  input.id='userinput'
+
+  const button=document.createElement('button')
+  button.innerHTML='place your guess'
+
+  const create=document.createElement('button')
+  create.innerHTML='store in lc'
+
+
+  const result=document.getElementById('guess')
+  result.appendChild(header)
+  result.appendChild(create)
+  result.appendChild(input)
+  result.appendChild(button)
+
+  create.onclick=local
+  function local(){
+      const lc=document.getElementById('inputid')
+      localStorage.setItem('inputid',lc)
+      alert('your guess has been stored')
+  }
+
+    button.onclick=guess
+    const random=Math.floor(Math.random()*10)
+    function guess(){
+     const anything=document.getElementById('userinput').value
+     const display=document.createElement('h3')
+     display.innerHTML=anything
+     result.appendChild(display)
+     if(random == anything){
+          display.innerHTML='congratulation G'
+     }
+     else if( random < anything){
+          display.innerHTML='go a bit lower gng'
+     }
+     else {
+          display.innerHTML='go a bit higher'
+     }
+
+     const remove=document.createElement('button')
+     remove.innerHTML='delete'
+     display.appendChild(remove)
+
+     remove.onclick=trash
+     function trash(){
+          display.remove()
+     }
+ 
+     
+     }
+
+    
+
+     </script>
+     
+</body>
+</html>
